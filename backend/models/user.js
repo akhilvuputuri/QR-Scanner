@@ -19,16 +19,12 @@ module.exports = (sequelize, DataTypes) => {
     },
   });
 
-  //   User.associate = (models) => {
-  //     // associations can be defined here
-  //     User.belongsToMany(models.Group, {
-  //       through: "User_Group",
-  //       foreignKey: "userId",
-  //     });
-  //     User.belongsToMany(models.Event, {
-  //       through: "User_Event",
-  //       foreignKey: "userId",
-  //     });
-  //   };
+  User.associate = (models) => {
+    // associations can be defined here
+    User.hasMany(models.Voucher, {
+      foreignKey: "id",
+      sourceKey: "id",
+    });
+  };
   return User;
 };

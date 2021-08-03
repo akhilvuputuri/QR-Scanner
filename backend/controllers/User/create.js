@@ -9,8 +9,8 @@ const createUser = async (req, res) => {
       defaults: {
         username: req.body.username,
         password: hashedPassword,
-        fullName: req.body.fullName,
-        profilePicUrl: req.body.profilePicUrl,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
       },
     });
     let name;
