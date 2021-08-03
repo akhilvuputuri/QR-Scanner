@@ -4,7 +4,7 @@ import { StyleSheet, View, Text } from "react-native";
 function ProfileScreen(props) {
   return (
     <View style={styles.background}>
-      <Text>Discover Screen</Text>
+      <Text>Profile Screen</Text>
     </View>
   );
 }

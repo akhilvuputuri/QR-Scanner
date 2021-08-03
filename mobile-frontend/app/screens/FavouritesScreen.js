@@ -4,7 +4,7 @@ import { StyleSheet, View, Text } from "react-native";
 function FavouritesScreen(props) {
   return (
     <View style={styles.background}>
-      <Text>Discover Screen</Text>
+      <Text>Favourites Screen</Text>
     </View>
   );
 }
