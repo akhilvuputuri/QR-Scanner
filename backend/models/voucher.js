@@ -23,6 +23,9 @@ module.exports = (sequelize, DataTypes) => {
     redeemed: {
       type: DataTypes.BOOLEAN,
     },
+    qrCodeText: {
+      type: DataTypes.TEXT,
+    },
   });
 
   Voucher.associate = (models) => {
