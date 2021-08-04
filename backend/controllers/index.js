@@ -10,6 +10,7 @@ const { retrieveAllVouchers } = require("./Voucher/retrieveAll");
 const { retrieveVoucher } = require("./Voucher/retrieve");
 const { purchase } = require("./Voucher/purchase");
 const { redeem } = require("./Voucher/redeem");
+const { savings } = require("./User/savings");
 
 module.exports = {
   createUser,
@@ -22,4 +23,5 @@ module.exports = {
   favourite,
   purchase,
   redeem,
+  savings,
 };
