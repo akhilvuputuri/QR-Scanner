@@ -10,6 +10,10 @@ const createVoucher = async (req, res) => {
    cost: req.body.cost,
    expiry: req.body.expiry,
    redeemed: req.body.redeemed,
+   description: req.body.description,
+   rating: req.body.rating,
+   imageUrl: req.body.imageUrl,
+   shopName: req.body.shopName,
    qrCodeText: req.body.qrCodeText,
   });
   let name = voucher.name;
