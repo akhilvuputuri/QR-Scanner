@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, SafeAreaView, View, Text, FlatList, ScrollView } from "react-native";
+import { StyleSheet, SafeAreaView, View, Text, ScrollView } from "react-native";
 import SearchBar from '../components/SearchBar';
 import VoucherCard from '../components/VoucherCard';
 import colors from '../../assets/colors';
@@ -39,20 +39,53 @@ function DiscoverScreen(props) {
           value={searchQuery}
         />
       </View>
-      <ScrollView style={styles.cardsContainer}>
-        <Text
-          style={styles.heading}
-        >
-          Nearby
-        </Text>
-        <ScrollView contentContainerStyle={styles.voucherCardsWrapper} directionalLockEnabled>
-          {fakeData && fakeData.map((item) => {
-            return (
-              <VoucherCard item={item} />
-            )
-          })}
+      <View style={{ flex: 1 }}>
+        <ScrollView>
+          <View style={styles.cardsContainer}>
+            <Text
+              style={styles.heading}
+            >
+              Nearby
+            </Text>
+            <View style={styles.voucherCardsWrapper}>
+              <ScrollView
+                horizontal
+                showsHorizontalScrollIndicator={false}
+              >
+                {fakeData && fakeData.map((item, idx) => {
+                  const last = idx + 1 === fakeData.length;
+                  return (
+                    <VoucherCard item={item} last={last} />
+                  )
+                })}
+              </ScrollView>
+            </View>
+            <Text
+              style={{
+                marginTop: 20,
+                ...styles.heading}}
+            >
+              Flash sale
+            </Text>
+            <View style={{
+              marginBottom: 150,
+              ...styles.voucherCardsWrapper
+            }}>
+              <ScrollView
+                horizontal
+                showsHorizontalScrollIndicator={false}
+              >
+                {fakeData && fakeData.map((item, idx) => {
+                  const last = idx + 1 === fakeData.length;
+                  return (
+                    <VoucherCard item={item} last={last} />
+                  )
+                })}
+              </ScrollView>
+            </View>
+          </View>
         </ScrollView>
-      </ScrollView>
+      </View>
     </SafeAreaView>
   );
 }
@@ -68,22 +101,22 @@ const styles = StyleSheet.create({
     top: 20,
     left: 30,
     right: 30,
+    zIndex: 1,
   },
   cardsContainer: {
     flex: 1,
-    top: 100,
-    left: 30,
-    right: 30,
-    height: 200,
+    marginTop: 90,
   },
   heading: {
     fontFamily: 'OpenSans_800ExtraBold',
     color: 'white',
     fontSize: 24,
+    left: 30,
+    right: 30,
   },
   voucherCardsWrapper: {
     position: 'relative',
-    marginTop: 5,
+    marginTop: 10,
     flexDirection: 'row',
     flex: 1,
     height: 350,

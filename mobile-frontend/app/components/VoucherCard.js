@@ -2,12 +2,15 @@ import React from 'react';
 import { StyleSheet, View, Text, Image } from "react-native";
 import colors from '../../assets/colors';
 
-const VoucherCard = ({ item }) => {
+const VoucherCard = ({ item, last }) => {
   const { shopName, voucherName, description, rating, cost, value, imageUrl } = item;
   const saved = (parseInt(value) - parseInt(cost)).toString();
 
   return (
-    <View style={styles.container}>
+    <View style={{ 
+      marginRight: last ? 30 : 0,
+      ...styles.container
+    }}>
       <Image 
         source={{ uri: imageUrl }}
         style={styles.image}
@@ -50,7 +53,7 @@ const styles = StyleSheet.create({
     width: 240,
     backgroundColor: '#fff',
     borderRadius: 8,
-    marginRight: 24,
+    marginLeft: 32,
   },
   savedPill: {
     position: 'absolute',
