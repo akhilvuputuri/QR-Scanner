@@ -12,13 +12,11 @@ function HomeScreen(props) {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.searchbarContainer}>
-        <View style={{ width: 350 }}>
-          <SearchBar
-            placeholder="Search"
-            onChangeText={onChangeSearch}
-            value={searchQuery}
-          />
-        </View>
+        <SearchBar
+          placeholder="Search"
+          onChangeText={onChangeSearch}
+          value={searchQuery}
+        />
       </View>
       <View style={{ marginTop: 90, flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <Text style={styles.welcomeText}>Welcome Back Willy!</Text>
