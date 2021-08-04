@@ -1,6 +1,5 @@
+import 'react-native-gesture-handler';
 import React from 'react';
-import HomeScreen from './app/screens/HomeScreen';
-import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import Navbar from './navigation/Navbar';
 import { 
@@ -15,7 +14,7 @@ import {
   OpenSans_700Bold_Italic,
   OpenSans_800ExtraBold,
   OpenSans_800ExtraBold_Italic 
-} from '@expo-google-fonts/open-sans'
+} from '@expo-google-fonts/open-sans';
 
 export default function App() {
   let [fontsLoaded] = useFonts({

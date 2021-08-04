@@ -24,12 +24,39 @@ const fakeData = [
     value: "30",
     imageUrl: "https://picsum.photos/200/300",
   },
+  {
+    shopName: 'nike',
+    voucherName: 'All Shoes',
+    description: 'This voucher is applicable to shoes only.',
+    rating: '4.43',
+    cost: '14',
+    value: '30',
+    imageUrl: 'https://picsum.photos/200/300'
+  },
+  {
+    shopName: 'nike',
+    voucherName: 'All Shoes',
+    description: 'This voucher is applicable to shoes only.',
+    rating: '4.43',
+    cost: '14',
+    value: '30',
+    imageUrl: 'https://picsum.photos/200/300'
+  },
+  {
+    shopName: 'nike',
+    voucherName: 'All Shoes',
+    description: 'This voucher is applicable to shoes only.',
+    rating: '4.43',
+    cost: '14',
+    value: '30',
+    imageUrl: 'https://picsum.photos/200/300'
+  },
 ];
 
-function DiscoverScreen(props) {
-  const [searchQuery, setSearchQuery] = useState("");
-  const [vouchers, setVouchers] = useState([]);
-  const onChangeSearch = (query) => setSearchQuery(query);
+function DiscoverScreen({ navigation }) {
+  const [searchQuery, setSearchQuery] = useState('');
+  const [vouchers, setVouchers] = useState([])
+  const onChangeSearch = query => setSearchQuery(query);
 
   useEffect(() => {
     axios
@@ -53,14 +80,22 @@ function DiscoverScreen(props) {
       <View style={{ flex: 1 }}>
         <ScrollView>
           <View style={styles.cardsContainer}>
-            <Text style={styles.heading}>Nearby</Text>
+            <Text
+              style={styles.heading}
+            >
+              Deals under $20
+            </Text>
             <View style={styles.voucherCardsWrapper}>
-              <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-                {vouchers &&
-                  vouchers.map((item, idx) => {
-                    const last = idx + 1 === vouchers.length;
-                    return <VoucherCard item={item} last={last} />;
-                  })}
+              <ScrollView
+                horizontal
+                showsHorizontalScrollIndicator={false}
+              >
+                {fakeData && fakeData.map((item, idx) => {
+                  const last = idx + 1 === fakeData.length;
+                  return (
+                    <VoucherCard item={item} last={last} key={idx} navigation={navigation} />
+                  )
+                })}
               </ScrollView>
             </View>
             <Text
@@ -71,18 +106,20 @@ function DiscoverScreen(props) {
             >
               Flash sale
             </Text>
-            <View
-              style={{
-                marginBottom: 150,
-                ...styles.voucherCardsWrapper,
-              }}
-            >
-              <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-                {vouchers &&
-                  vouchers.map((item, idx) => {
-                    const last = idx + 1 === vouchers.length;
-                    return <VoucherCard item={item} last={last} />;
-                  })}
+            <View style={{
+              marginBottom: 150,
+              ...styles.voucherCardsWrapper
+            }}>
+              <ScrollView
+                horizontal
+                showsHorizontalScrollIndicator={false}
+              >
+                {fakeData && fakeData.map((item, idx) => {
+                  const last = idx + 1 === fakeData.length;
+                  return (
+                    <VoucherCard item={item} last={last} key={idx} navigation={navigation} />
+                  )
+                })}
               </ScrollView>
             </View>
           </View>
@@ -99,8 +136,8 @@ const styles = StyleSheet.create({
     backgroundColor: colors.dodgerblue,
   },
   searchbarContainer: {
-    position: "absolute",
-    top: 20,
+    position: 'absolute',
+    top: 65,
     left: 30,
     right: 30,
     zIndex: 1,

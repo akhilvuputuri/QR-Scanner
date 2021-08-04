@@ -1,50 +1,55 @@
-import React from "react";
-import { StyleSheet, View, Text, Image } from "react-native";
-import colors from "../../assets/colors";
+import React from 'react';
+import { StyleSheet, View, Text, Image, TouchableWithoutFeedback } from "react-native";
+import colors from '../../assets/colors';
 
-const VoucherCard = ({ item, last }) => {
-  const { shopName, name, description, rating, cost, value, imageUrl } = item;
+const VoucherCard = ({ item, last, navigation }) => {
+  const { shopName, voucherName, description, rating, cost, value, imageUrl } = item;
   const saved = (parseInt(value) - parseInt(cost)).toString();
 
   return (
-    <View
-      style={{
-        marginRight: last ? 30 : 0,
-        ...styles.container,
-      }}
+    <TouchableWithoutFeedback
+      onPress={() => navigation.navigate('VoucherInfoScreen', { item })}
     >
-      <Image source={{ uri: imageUrl }} style={styles.image} />
-      <View style={styles.savedPill}>
-        <Text style={styles.savedText}>${saved} saved!</Text>
-      </View>
-      <View style={styles.bottomContainer}>
-        <View style={styles.textContainer}>
-          <Text style={styles.heading}>
-            {shopName}: {name}
-          </Text>
-          <Text style={styles.text}>{description}</Text>
+      <View
+        style={{ 
+          marginRight: last ? 30 : 0,
+          ...styles.container
+        }}
+      >
+        <Image 
+          source={{ uri: imageUrl }}
+          style={styles.image}
+        />
+        <View style={styles.savedPill}>
+          <Text style={styles.savedText}>${saved} saved!</Text>
         </View>
-        <View style={styles.ratingContainer}>
-          <View style={{ flexDirection: "row" }}>
-            <Image
-              source={require("../../assets/icons/star-icon.png")}
-              resizeMode="contain"
-              style={{
-                width: 16,
-                height: 16,
-                marginLeft: 2,
-                marginRight: 5,
-              }}
-            />
-            <Text style={styles.ratingText}>{rating}</Text>
+        <View style={styles.bottomContainer}>
+          <View style={styles.textContainer}>
+            <Text style={styles.heading}>{shopName}: {voucherName}</Text>
+            <Text style={styles.text}>{description}</Text>
           </View>
-          <View style={{ flexDirection: "row" }}>
-            <Text style={styles.valueText}>${value}</Text>
-            <Text style={styles.costText}>${cost}</Text>
+          <View style={styles.ratingContainer}>
+            <View style={{ flexDirection: 'row' }}>
+              <Image 
+                source={require('../../assets/icons/star-icon.png')}
+                resizeMode='contain'
+                style={{
+                  width: 16,
+                  height: 16,
+                  marginLeft: 2,
+                  marginRight: 5,
+                }}
+              />
+              <Text style={styles.ratingText}>{rating}</Text>
+            </View>
+            <View style={{ flexDirection: 'row' }}>
+              <Text style={styles.valueText}>${value}</Text>
+              <Text style={styles.costText}>${cost}</Text>
+            </View>
           </View>
         </View>
       </View>
-    </View>
+    </TouchableWithoutFeedback>
   );
 };
 
