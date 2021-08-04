@@ -1,10 +1,7 @@
 import 'react-native-gesture-handler';
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
 import Navbar from './navigation/Navbar';
-import HomeScreen from './app/screens/HomeScreen';
-import VoucherInfoScreen from './app/screens/VoucherInfoScreen';
 import { 
   useFonts,
   OpenSans_300Light,

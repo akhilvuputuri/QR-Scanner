@@ -41,6 +41,7 @@ const Navbar = () => {
       screenOptions={{
         headerShown: false,
         tabBarShowLabel: false,
+        unmountOnBlur: true,
         tabBarStyle: {
           position: 'absolute',
           bottom: 25,

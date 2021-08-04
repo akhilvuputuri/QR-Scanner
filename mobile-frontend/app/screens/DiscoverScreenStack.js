@@ -1,5 +1,4 @@
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import DiscoverScreen from './DiscoverScreen';
 import VoucherInfoScreen from './VoucherInfoScreen';
@@ -7,7 +6,6 @@ import VoucherInfoScreen from './VoucherInfoScreen';
 const Stack = createStackNavigator();
 
 const DiscoverScreenStack = () => {
-
   return (
     <Stack.Navigator
       initialRouteName="DiscoverScreen"
@@ -18,7 +16,7 @@ const DiscoverScreenStack = () => {
       <Stack.Screen 
         name="DiscoverScreen"
         component={DiscoverScreen}
-        options={{ title: 'Discover Screen' }}
+        options={{ title: 'DiscoverScreen' }}
       />
       <Stack.Screen 
         name="VoucherInfoScreen"
