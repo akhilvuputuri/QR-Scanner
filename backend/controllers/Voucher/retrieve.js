@@ -9,7 +9,8 @@ const retrieveVoucher = async (req, res) => {
    }
   });
   let name = voucher.name;
-  return res.status(200).send(`The ${name} voucher has been successfully retrieved.`);
+  console.log(`The ${name} voucher has been successfully retrieved.`)
+  return res.status(200).json({ voucher });
  } catch (error) {
   return res.status(500).json({ error: error.message });
  }
