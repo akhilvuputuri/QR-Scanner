@@ -5,6 +5,7 @@ import HomeScreen from '../app/screens/HomeScreen';
 import DiscoverScreen from '../app/screens/DiscoverScreen';
 import ScannerScreen from '../app/screens/ScannerScreen';
 import FavouritesScreen from '../app/screens/FavouritesScreen';
+import VouchersScreen from '../app/screens/VouchersScreen';
 import ProfileScreen from '../app/screens/ProfileScreen';
 
 const Tab = createBottomTabNavigator();
@@ -120,8 +121,8 @@ const Navbar = () => {
         }}
       />
       <Tab.Screen 
-        name="Favourites"
-        component={FavouritesScreen}
+        name="Vouchers"
+        component={VouchersScreen}
         options={{
           tabBarIcon: ({ focused }) => (
             <View>
