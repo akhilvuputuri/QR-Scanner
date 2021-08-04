@@ -8,7 +8,7 @@ const VoucherCard = ({ item, last, navigation }) => {
 
   return (
     <TouchableWithoutFeedback
-      onPress={() => navigation.navigate('VoucherInfoScreen')}
+      onPress={() => navigation.navigate('VoucherInfoScreen', { item })}
     >
       <View
         style={{ 
