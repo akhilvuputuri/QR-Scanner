@@ -5,22 +5,22 @@ const createUser = async (req, res) => {
   try {
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
     const [user, created] = await User.findOrCreate({
-      where: { username: req.body.username },
+      where: { email: req.body.email },
       defaults: {
-        username: req.body.username,
+        email: req.body.email,
         password: hashedPassword,
         firstName: req.body.firstName,
         lastName: req.body.lastName,
       },
     });
-    let name;
+    let email;
     if (created) {
-      name = user.username;
-      return res.status(201).json({ name });
+      email = user.email;
+      return res.status(201).json({ email });
     }
-    name = user.username;
+    email = user.email;
     return res.status(201).json({
-      name,
+      email,
     });
   } catch (error) {
     return res.status(500).json({ error: error.message });
