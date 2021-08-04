@@ -23,9 +23,36 @@ const fakeData = [
     value: '30',
     imageUrl: 'https://picsum.photos/200/300'
   },
+  {
+    shopName: 'nike',
+    voucherName: 'All Shoes',
+    description: 'This voucher is applicable to shoes only.',
+    rating: '4.43',
+    cost: '14',
+    value: '30',
+    imageUrl: 'https://picsum.photos/200/300'
+  },
+  {
+    shopName: 'nike',
+    voucherName: 'All Shoes',
+    description: 'This voucher is applicable to shoes only.',
+    rating: '4.43',
+    cost: '14',
+    value: '30',
+    imageUrl: 'https://picsum.photos/200/300'
+  },
+  {
+    shopName: 'nike',
+    voucherName: 'All Shoes',
+    description: 'This voucher is applicable to shoes only.',
+    rating: '4.43',
+    cost: '14',
+    value: '30',
+    imageUrl: 'https://picsum.photos/200/300'
+  },
 ];
 
-function DiscoverScreen(props) {
+function DiscoverScreen({ navigation }) {
   const [searchQuery, setSearchQuery] = useState('');
 
   const onChangeSearch = query => setSearchQuery(query);
@@ -45,7 +72,7 @@ function DiscoverScreen(props) {
             <Text
               style={styles.heading}
             >
-              Nearby
+              Deals under $20
             </Text>
             <View style={styles.voucherCardsWrapper}>
               <ScrollView
@@ -55,7 +82,7 @@ function DiscoverScreen(props) {
                 {fakeData && fakeData.map((item, idx) => {
                   const last = idx + 1 === fakeData.length;
                   return (
-                    <VoucherCard item={item} last={last} />
+                    <VoucherCard item={item} last={last} key={idx} navigation={navigation} />
                   )
                 })}
               </ScrollView>
@@ -78,7 +105,7 @@ function DiscoverScreen(props) {
                 {fakeData && fakeData.map((item, idx) => {
                   const last = idx + 1 === fakeData.length;
                   return (
-                    <VoucherCard item={item} last={last} />
+                    <VoucherCard item={item} last={last} key={idx} navigation={navigation} />
                   )
                 })}
               </ScrollView>
@@ -98,7 +125,7 @@ const styles = StyleSheet.create({
   },
   searchbarContainer: {
     position: 'absolute',
-    top: 20,
+    top: 65,
     left: 30,
     right: 30,
     zIndex: 1,
