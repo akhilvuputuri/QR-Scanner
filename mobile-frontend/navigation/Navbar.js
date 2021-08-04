@@ -168,7 +168,7 @@ const Navbar = () => {
 
 const styles = StyleSheet.create({
   shadow: {
-    shadowColor: '#7F5DF0',
+    shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 10,

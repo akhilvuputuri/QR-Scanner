@@ -25,8 +25,18 @@ function VoucherInfoScreen({ navigation, route }) {
           style={{ height: 280, width: '100%' }}
         />
       </View>
-      <View style={styles.textContainer}>
+      <View style={styles.headingContainer}>
         <Text style={styles.heading}>{shopName}: {voucherName}</Text>
+        <Image 
+          source={require('../../assets/icons/favourite-icon.png')}
+          resizeMode='contain'
+          style={{
+            width: 24,
+            height: 24,
+          }}
+        />
+      </View>
+      <View style={styles.textContainer}>
         <Text style={styles.text}>{description}</Text>
       </View>
       <View style={styles.valueAndCostContainer}>
@@ -63,9 +73,15 @@ const styles = StyleSheet.create({
     height: 280,
     width: '100%',
   },
-  textContainer: {
-    height: 220,
+  headingContainer: {
     marginTop: 16,
+    marginHorizontal: 30,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  textContainer: {
+    height: 180,
     marginHorizontal: 30,
   },
   heading: {
