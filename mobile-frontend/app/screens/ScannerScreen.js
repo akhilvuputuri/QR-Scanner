@@ -4,7 +4,7 @@ import { StyleSheet, View, Text } from "react-native";
 function ScannerScreen(props) {
   return (
     <View style={styles.background}>
-      <Text>Discover Screen</Text>
+      <Text>Scan Screen</Text>
     </View>
   );
 }
