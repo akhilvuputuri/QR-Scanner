@@ -1,33 +1,34 @@
-import React from 'react';
+import React from "react";
 import { StyleSheet, View, Text, Image } from "react-native";
-import colors from '../../assets/colors';
+import colors from "../../assets/colors";
 
 const VoucherCard = ({ item, last }) => {
-  const { shopName, voucherName, description, rating, cost, value, imageUrl } = item;
+  const { shopName, name, description, rating, cost, value, imageUrl } = item;
   const saved = (parseInt(value) - parseInt(cost)).toString();
 
   return (
-    <View style={{ 
-      marginRight: last ? 30 : 0,
-      ...styles.container
-    }}>
-      <Image 
-        source={{ uri: imageUrl }}
-        style={styles.image}
-      />
+    <View
+      style={{
+        marginRight: last ? 30 : 0,
+        ...styles.container,
+      }}
+    >
+      <Image source={{ uri: imageUrl }} style={styles.image} />
       <View style={styles.savedPill}>
         <Text style={styles.savedText}>${saved} saved!</Text>
       </View>
       <View style={styles.bottomContainer}>
         <View style={styles.textContainer}>
-          <Text style={styles.heading}>{shopName}: {voucherName}</Text>
+          <Text style={styles.heading}>
+            {shopName}: {name}
+          </Text>
           <Text style={styles.text}>{description}</Text>
         </View>
         <View style={styles.ratingContainer}>
-          <View style={{ flexDirection: 'row' }}>
-            <Image 
-              source={require('../../assets/icons/star-icon.png')}
-              resizeMode='contain'
+          <View style={{ flexDirection: "row" }}>
+            <Image
+              source={require("../../assets/icons/star-icon.png")}
+              resizeMode="contain"
               style={{
                 width: 16,
                 height: 16,
@@ -37,7 +38,7 @@ const VoucherCard = ({ item, last }) => {
             />
             <Text style={styles.ratingText}>{rating}</Text>
           </View>
-          <View style={{ flexDirection: 'row' }}>
+          <View style={{ flexDirection: "row" }}>
             <Text style={styles.valueText}>${value}</Text>
             <Text style={styles.costText}>${cost}</Text>
           </View>
@@ -45,28 +46,28 @@ const VoucherCard = ({ item, last }) => {
       </View>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     height: 350,
     width: 240,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
     borderRadius: 8,
     marginLeft: 32,
   },
   savedPill: {
-    position: 'absolute',
+    position: "absolute",
     top: 10,
     left: 10,
     borderRadius: 10,
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     width: 100,
     height: 22,
     backgroundColor: colors.orange,
-    shadowColor: 'black',
+    shadowColor: "black",
     shadowOffset: {
       width: 0,
       height: 10,
@@ -76,13 +77,13 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   savedText: {
-    fontFamily: 'OpenSans_400Regular',
+    fontFamily: "OpenSans_400Regular",
     fontSize: 12,
   },
   image: {
     height: 160,
     width: 240,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
     borderRadius: 8,
   },
   bottomContainer: {
@@ -95,39 +96,39 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   heading: {
-    fontFamily: 'OpenSans_700Bold',
+    fontFamily: "OpenSans_700Bold",
     fontSize: 18,
   },
   text: {
-    fontFamily: 'OpenSans_400Regular',
+    fontFamily: "OpenSans_400Regular",
     fontSize: 12,
     marginTop: 10,
   },
   ratingText: {
-    fontFamily: 'OpenSans_400Regular',
+    fontFamily: "OpenSans_400Regular",
     fontSize: 12,
   },
   valueText: {
-    fontFamily: 'OpenSans_400Regular',
+    fontFamily: "OpenSans_400Regular",
     fontSize: 12,
-    textDecorationStyle: 'solid',
-    textDecorationLine: 'line-through',
+    textDecorationStyle: "solid",
+    textDecorationLine: "line-through",
     marginRight: 10,
-    color: 'gray'
+    color: "gray",
   },
   costText: {
-    fontFamily: 'OpenSans_400Regular',
+    fontFamily: "OpenSans_400Regular",
     fontSize: 12,
     marginRight: 2,
   },
   ratingContainer: {
     height: 36,
-    borderTopColor: 'lightgray',
+    borderTopColor: "lightgray",
     borderTopWidth: 1,
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    flexDirection: 'row',
-  }, 
+    alignItems: "center",
+    justifyContent: "space-between",
+    flexDirection: "row",
+  },
 });
 
 export default VoucherCard;
