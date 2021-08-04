@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from '../app/screens/HomeScreen';
-import DiscoverScreen from '../app/screens/DiscoverScreen';
+import DiscoverScreenStack from '../app/screens/DiscoverScreenStack';
 import ScannerScreen from '../app/screens/ScannerScreen';
 import FavouritesScreen from '../app/screens/FavouritesScreen';
 import VouchersScreen from '../app/screens/VouchersScreen';
@@ -13,25 +13,25 @@ const Tab = createBottomTabNavigator();
 const QRButton = ({ children, onPress }) => {
   return (
     <TouchableOpacity
-    style={{
-      top: -30,
-      justifyContent: 'center',
-      alignItems: 'center',
-      ...styles.shadow,
-    }}
-    onPress={onPress}
-  >
-    <View
       style={{
-        width: 80,
-        height: 80,
-        borderRadius: 40,
-        backgroundColor: '#fff',
+        top: -30,
+        justifyContent: 'center',
+        alignItems: 'center',
+        ...styles.shadow,
       }}
+      onPress={onPress}
     >
-      {children}
-    </View>
-  </TouchableOpacity>
+      <View
+        style={{
+          width: 80,
+          height: 80,
+          borderRadius: 40,
+          backgroundColor: '#fff',
+        }}
+      >
+        {children}
+      </View>
+    </TouchableOpacity>
   )
 }
 
@@ -40,7 +40,9 @@ const Navbar = () => {
     <Tab.Navigator
       initialRouteName="Home"
       screenOptions={{
+        headerShown: false,
         tabBarShowLabel: false,
+        unmountOnBlur: true,
         tabBarStyle: {
           position: 'absolute',
           bottom: 25,
@@ -80,7 +82,7 @@ const Navbar = () => {
       />
       <Tab.Screen
         name="Discover"
-        component={DiscoverScreen}
+        component={DiscoverScreenStack}
         options={{
           tabBarIcon: ({ focused }) => (
             <View>
