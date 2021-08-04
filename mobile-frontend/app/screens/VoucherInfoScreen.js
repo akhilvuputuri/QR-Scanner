@@ -1,10 +1,10 @@
 import React from 'react';
-import { StyleSheet, SafeAreaView, Text, Image, View, TouchableWithoutFeedback, Button, TouchableOpacity } from "react-native";
+import { StyleSheet, SafeAreaView, Text, Image, View, TouchableWithoutFeedback, TouchableOpacity } from "react-native";
 import colors from '../../assets/colors';
 
 function VoucherInfoScreen({ navigation, route }) {
   const { shopName, voucherName, description, rating, cost, value, imageUrl } = route.params.item;
-  // console.log(shopName)
+
   return (
     <SafeAreaView style={styles.container}>
       <TouchableWithoutFeedback onPress={() => navigation.goBack()}>
