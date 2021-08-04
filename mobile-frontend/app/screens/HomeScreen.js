@@ -1,6 +1,7 @@
 import React from 'react';
-import { StyleSheet, View, Text } from "react-native";
-import { Searchbar, IconButton, Button } from 'react-native-paper';
+import { StyleSheet, View, Text, SafeAreaView } from "react-native";
+import SearchBar from '../components/SearchBar';
+import { IconButton, Button } from 'react-native-paper';
 
 function HomeScreen(props) {
   const [searchQuery, setSearchQuery] = React.useState('');
@@ -9,63 +10,81 @@ function HomeScreen(props) {
 
 
   return (
-    <View
+    <SafeAreaView
     style={styles.background}>
+
       <View
       style={styles.searchBarContainer}>
+        <View style={{}}>
+
+        </View>
         <Text style={styles.welcomeText}>Welcome Back Willy!</Text>
-        <Searchbar
-          placeholder="Search"
-          onChangeText={onChangeSearch}
-          value={searchQuery}
-        />
+        <View style={{width: 350}}>
+          <SearchBar
+            placeholder="Search"
+            onChangeText={onChangeSearch}
+            value={searchQuery}
+          />
+        </View>
         <View style={styles.tapWrapper2}>
           <View style={styles.tap2}>
             <Text style={{
                 fontSize: 20,
+                color: '#fff',
+                fontFamily: "OpenSans_400Regular"
                 }}>My Savings</Text>
             <View style={{
               flexDirection: 'row',
               alignItems: 'center',
               justifyContent: 'center',
             }}>
-              <IconButton icon="cash-usd" size={40} styles={{
+              <IconButton icon="cash-usd" color="black" size={40} styles={{
                 flex: 1
               }}/>
               <Text style={{
                 flex: 1,
                 fontSize: 30,
+                color: '#fff',
+                fontFamily: "OpenSans_400Regular"
                 }}>
                   $130
               </Text>
             </View>
           </View>
+          <View style={styles.verticleLine}></View>
           <View style={styles.tap2}>
             <Text style={{
+                color: '#fff',
                 fontSize: 20,
+                fontFamily: "OpenSans_400Regular"
                 }}>My Coupons</Text>
             <View style={{
               flexDirection: 'row',
               alignItems: 'center',
               justifyContent: 'center',
             }}>
-              <IconButton icon="ticket-percent" size={40} styles={{
+              <IconButton icon="ticket-percent" color="black" size={40} styles={{
                 flex: 1
               }}/>
               <Text style={{
+                color: '#fff',
                 flex: 1,
                 fontSize: 30,
+                fontFamily: "OpenSans_400Regular"
                 }}>
                   40
               </Text>
             </View>
           </View>
+          <Text style={{marginTop: 30, marginLeft: 25, fontSize: 30, color: '#fff',fontFamily: "OpenSans_600SemiBold"}}>Start saving today!</Text>
+          <Text style={{marginTop: 70, marginLeft: 100,
+            ...styles.headerText}}>Categories</Text>
         </View>
-        <Text>Start saving today!</Text>
+        
       </View>
       <View
       style={styles.body}>
-        <Text style={styles.headerText}>Categories</Text>
+
         <View style={styles.tapWrapper}>
           <View style={styles.tap}>
             <IconButton icon="food" size={50} styles={styles.tap}/>
@@ -89,36 +108,43 @@ function HomeScreen(props) {
           </View>
           <View style={styles.tap}>
             <IconButton icon="ice-cream" size={50} styles={styles.tap}/>
-            <Text>Dessers</Text>
+            <Text>Desserts</Text>
           </View>
         </View>
       </View>
       
-    </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
+  verticleLine: {
+    height: '50%',
+    width: 3,
+    backgroundColor: '#fff',
+  },
   body: {
     // backgroundColor: '#333',
     flex: 1
   },
   headerText: {
-    color: '#000',
-    fontSize: 30,
-    alignSelf: 'center'
+    color: '#fff',
+    fontSize: 24,
+    alignSelf: 'center',
+    fontFamily: "OpenSans_600SemiBold"
   },
   tapWrapper: {
-    // padding: 50,
-    paddingTop: 0,
-    paddingBottom: 50,
-    paddingLeft: 50,
-    paddingRight: 50,
     flexDirection: 'row',
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
+    backgroundColor: 'white',
+    marginTop: 10,
+    marginLeft: 50,
+    marginRight: 50,
+    paddingBottom: 20,
+    borderRadius: 20
   },
   tap: {
-    backgroundColor: 'white',
+    // backgroundColor: 'white',
     width: 100,
     height: 100,
     margin: 2,
@@ -131,17 +157,20 @@ const styles = StyleSheet.create({
   },
   tapWrapper2: {
     flex: 1,
-    padding: 50,
+    paddingTop: 20,
+    paddingRight: 50,
+    paddingLeft: 50,
     flexDirection: 'row',
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
+    
   },
   tap2: {
-    backgroundColor: 'white',
+    // backgroundColor: 'white',
     width: 150,
-    height: 150,
+    height: 100,
     margin: 2,
-    color: '#fff',
-    lineHeight: 150,
+    // color: '#fff',
+    lineHeight: 100,
     textAlign: 'center',
     fontSize: 30,
     alignItems: 'center',
@@ -150,11 +179,16 @@ const styles = StyleSheet.create({
   background: {
     backgroundColor: "#0496FF",
     flex: 1,
-    alignItems: 'center',
     justifyContent: 'center',
   },
   welcomeText:{
-    margin: 40
+    color: '#fff',
+    marginTop: 10,
+    marginBottom: 10,
+    fontSize: 24,
+    fontFamily: "OpenSans_400Regular",
+    alignSelf: 'flex-start',
+    paddingLeft: 30
   },
   searchBarContainer: {
     // backgroundColor: "#ffffff",
