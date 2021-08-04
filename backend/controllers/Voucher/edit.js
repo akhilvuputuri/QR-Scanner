@@ -1,9 +1,8 @@
 const { Voucher } = require("../../models");
 
-const createVoucher = async (req, res) => {
+const editVoucher = async (req, res) => {
  try {
-  const voucher = await Voucher.create({
-   id: req.body.id,
+  const voucher = await Voucher.update({
    name: req.body.name,
    claimable: req.body.claimable,
    value: req.body.value,
@@ -15,13 +14,15 @@ const createVoucher = async (req, res) => {
    imageUrl: req.body.imageUrl,
    shopName: req.body.shopName,
    qrCodeText: req.body.qrCodeText,
+  }, {
+   where: { id: req.body.id }
   });
   let name = voucher.name;
-  return res.status(200).send(`The ${name} Voucher has been successfully created.`);
+  return res.status(200).send(`The ${name} Voucher has been successfully edited.`);
  } catch (error) {
   return res.status(500).json({ error: error.message });
  }
 };
 module.exports = {
- createVoucher,
+ editVoucher,
 };
