@@ -3,6 +3,7 @@ import { DataGrid, GridAddIcon } from "@material-ui/data-grid";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
+import Form from "./Form";
 
 function rand() {
   return Math.round(Math.random() * 20) - 10;
@@ -213,6 +214,11 @@ export default function DataTable({ vouchers }) {
       boxShadow: theme.shadows[5],
       padding: theme.spacing(2, 4, 3),
     },
+    form: {
+      alignSelf: "center",
+      minWidth: 1000,
+      backgroundColor: "black",
+    },
   }));
   const classes = useStyles();
   const [modalStyle] = React.useState(getModalStyle);
@@ -228,10 +234,8 @@ export default function DataTable({ vouchers }) {
 
   const body = (
     <div style={modalStyle} className={classes.paper}>
-      <h2 id="simple-modal-title">Text in a modal</h2>
-      <p id="simple-modal-description">
-        Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-      </p>
+      <h2 id="simple-modal-title">Add Voucher</h2>
+      <Form className={classes.form} />
     </div>
   );
 

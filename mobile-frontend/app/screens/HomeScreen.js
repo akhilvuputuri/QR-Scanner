@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { StyleSheet, View, Text, SafeAreaView } from "react-native";
 import SearchBar from "../components/SearchBar";
 import { IconButton, Button } from "react-native-paper";
+import colors from "../../assets/colors";
 import axios from "axios";
 
 function HomeScreen(props) {
@@ -25,91 +26,42 @@ function HomeScreen(props) {
   }, []);
 
   return (
-    <SafeAreaView style={styles.background}>
-      <View style={styles.searchBarContainer}>
-        <View style={{}}></View>
+    <SafeAreaView style={styles.container}>
+      <View style={styles.searchbarContainer}>
+        <SearchBar
+          placeholder="Search"
+          onChangeText={onChangeSearch}
+          value={searchQuery}
+        />
+      </View>
+      <View style={{ marginTop: 90, flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <Text style={styles.welcomeText}>Welcome Back Willy!</Text>
-        <View style={{ width: 350 }}>
-          <SearchBar
-            placeholder="Search"
-            onChangeText={onChangeSearch}
-            value={searchQuery}
-          />
-        </View>
         <View style={styles.tapWrapper2}>
           <View style={styles.tap2}>
-            <Text
+            <Text style={styles.subHeaderText}>My Savings</Text>
+            <View 
               style={{
-                fontSize: 20,
-                color: "#fff",
-                fontFamily: "OpenSans_400Regular",
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'center',
               }}
             >
-              My Savings
-            </Text>
-            <View
-              style={{
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              <IconButton
-                icon="cash-usd"
-                color="black"
-                size={40}
-                styles={{
-                  flex: 1,
-                }}
-              />
-              <Text
-                style={{
-                  flex: 1,
-                  fontSize: 30,
-                  color: "#fff",
-                  fontFamily: "OpenSans_400Regular",
-                }}
-              >
-                {`$ ${savings}`}
-              </Text>
+              <IconButton icon="cash-usd" color="black" size={36} styles={{ flex: 1 }}/>
+              <Text style={styles.savingsText}>{`$ ${savings}`}</Text>
             </View>
           </View>
           <View style={styles.verticleLine}></View>
           <View style={styles.tap2}>
-            <Text
-              style={{
-                color: "#fff",
-                fontSize: 20,
-                fontFamily: "OpenSans_400Regular",
-              }}
-            >
-              My Vouchers
-            </Text>
+          <Text style={styles.subHeaderText}>My Coupons</Text>
             <View
               style={{
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "center",
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'center',
               }}
             >
-              <IconButton
-                icon="ticket-percent"
-                color="black"
-                size={40}
-                styles={{
-                  flex: 1,
-                }}
-              />
-              <Text
-                style={{
-                  color: "#fff",
-                  flex: 1,
-                  fontSize: 30,
-                  fontFamily: "OpenSans_400Regular",
-                }}
-              >
-                {voucherCount}
-              </Text>
+              <IconButton icon="ticket-percent" color="black" size={36} styles={{ flex: 1 }}/>
+              <Text style={styles.savingsText}>{voucherCount}</Text>
             </View>
           </View>
           <Text
@@ -117,14 +69,17 @@ function HomeScreen(props) {
               marginTop: 30,
               marginLeft: 25,
               fontSize: 30,
-              color: "#fff",
-              fontFamily: "OpenSans_600SemiBold",
+              color: '#fff',
+              fontFamily: 'OpenSans_600SemiBold'
             }}
           >
             Start saving today!
           </Text>
-          <Text
-            style={{ marginTop: 70, marginLeft: 100, ...styles.headerText }}
+          <Text style={{
+              marginTop: 70,
+              marginLeft: 100,
+              ...styles.headerText
+            }}
           >
             Categories
           </Text>
@@ -164,25 +119,24 @@ function HomeScreen(props) {
 
 const styles = StyleSheet.create({
   verticleLine: {
-    height: "50%",
-    width: 3,
-    backgroundColor: "#fff",
+    height: '50%',
+    width: 2,
+    backgroundColor: '#fff',
+    borderRadius: 10,
   },
   body: {
-    // backgroundColor: '#333',
-    flex: 1,
+    flex: 1
   },
   headerText: {
     color: "#fff",
     fontSize: 24,
-    alignSelf: "center",
-    fontFamily: "OpenSans_600SemiBold",
+    alignSelf: 'center',
+    fontFamily: 'OpenSans_600SemiBold',
   },
   tapWrapper: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    backgroundColor: "white",
-    marginTop: 10,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    backgroundColor: 'white',
     marginLeft: 50,
     marginRight: 50,
     paddingBottom: 20,
@@ -205,40 +159,44 @@ const styles = StyleSheet.create({
     paddingTop: 20,
     paddingRight: 50,
     paddingLeft: 50,
-    flexDirection: "row",
-    flexWrap: "wrap",
+    flexDirection: 'row',
+    flexWrap: 'wrap',
   },
   tap2: {
-    // backgroundColor: 'white',
     width: 150,
-    height: 100,
     margin: 2,
-    // color: '#fff',
     lineHeight: 100,
     textAlign: "center",
     fontSize: 30,
     alignItems: "center",
     justifyContent: "center",
   },
-  background: {
-    backgroundColor: "#0496FF",
-    flex: 1,
-    justifyContent: "center",
+  subHeaderText: {
+    fontSize: 22,
+    color: '#fff',
+    fontFamily: "OpenSans_600SemiBold",
   },
-  welcomeText: {
-    color: "#fff",
-    marginTop: 10,
-    marginBottom: 10,
-    fontSize: 24,
+  savingsText: {
+    fontSize: 20,
+    color: '#fff',
     fontFamily: "OpenSans_400Regular",
-    alignSelf: "flex-start",
-    paddingLeft: 30,
   },
-  searchBarContainer: {
-    // backgroundColor: "#ffffff",
+  container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+    justifyContent: 'center',
+    backgroundColor: colors.dodgerblue,
+  },
+  welcomeText:{
+    color: '#fff',
+    fontSize: 24,
+    fontFamily: "OpenSans_600SemiBold",
+  },
+  searchbarContainer: {
+    position: 'absolute',
+    top: 65,
+    left: 30,
+    right: 30,
+    zIndex: 1,
   },
 });
 
