@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Constants from "expo-constants";
-import { StyleSheet, SafeAreaView, View, Text, Image, Button, Separator, Pressable, TextInput } from "react-native";
+import { StyleSheet, View, Text, Image, Pressable, TextInput, Keyboard, TouchableWithoutFeedback } from "react-native";
 import * as Yup from "yup";
 import Navbar from '../../navigation/Navbar';
 import HomeScreen from './HomeScreen';
@@ -13,35 +13,49 @@ const validationSchema = Yup.object().shape({
   });
 
 export function LoginScreen({navigation}) {
+    useEffect(() => {
+        Keyboard.addListener("keyboardDidShow", _keyboardDidShow);
+        Keyboard.addListener("keyboardDidHide", _keyboardDidHide);
+    
+        return () => {
+          Keyboard.removeListener("keyboardDidShow", _keyboardDidShow);
+          Keyboard.removeListener("keyboardDidHide", _keyboardDidHide);
+        };
+      }, []);
+    
+      const [keyboardStatus, setKeyboardStatus] = useState(undefined);
+      const _keyboardDidShow = () => setKeyboardStatus(true);
+      const _keyboardDidHide = () => setKeyboardStatus(false);
 
     return (
-        <View style={[styles.screen]}>
-            <Image style={styles.logo} source={require("../assets/logo.png")}/>
+        <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+            <View style={[styles.screen]}>
+                <Image style={styles.logo} source={require("../assets/logo.png")}/>
 
-            <Text style={styles.brandName}> Value Dollar </Text>
-            <Text style={styles.brandMotto}> Start Saving With Us </Text>
+                <Text style={styles.brandName}> Value Dollar </Text>
+                {!keyboardStatus && <Text style={styles.brandMotto}> Start Saving With Us </Text>}
 
-            <TextInput
-                style={styles.signInText}
-                autoCapitalize="none"
-                icon="email"
-                keyboardType="email-address"
-                name="email"
-                placeholder="Enter your email address"
-                placeholderTextColor='gray'
-                borderColor='gray'
-                textContentType="emailAddress"
-            />
-
-            <View
-            style={{
-                borderBottomColor: '#0496ff',
-                borderBottomWidth: 20,
-            }}
-            />
-            
-            <TextInput
+                <TextInput
                     style={styles.signInText}
+                    autoCapitalize="none"
+                    icon="email"
+                    keyboardType="email-address"
+                    name="email"
+                    placeholder="Enter your email address"
+                    placeholderTextColor='gray'
+                    borderColor='gray'
+                    borderRadius={5}
+                    textContentType="emailAddress"
+                />
+                <View
+                    style={{
+                        borderBottomColor: '#0496ff',
+                        borderBottomWidth: 20,
+                    }}
+                />
+                <TextInput
+                    style={styles.signInText}
+                    borderRadius={5}
                     autoCapitalize="none"
                     name="password"
                     placeholder="Enter your password"
@@ -49,14 +63,13 @@ export function LoginScreen({navigation}) {
                     borderColor= 'gray'
                     textContentType='password'
                     secureTextEntry={true}
-            />
-            
-            <Pressable style={styles.button}
-            onPress={()=>navigation.navigate(HomeScreen)}>
-                <Text style={styles.buttonText}>Let's Start Saving</Text>
-            </Pressable>
-            
-        </View>
+                />
+                <Pressable style={styles.button} onPress={()=>navigation.navigate(HomeScreen)}>
+                    <Text style={styles.buttonText}>Start saving!</Text>
+                </Pressable>
+                
+            </View>
+        </TouchableWithoutFeedback>
     );
 }
 
@@ -74,17 +87,20 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         fontSize: 30,
         alignSelf: 'center',
-        top: 20
+        top: 20,
+        fontFamily: "OpenSans_800ExtraBold",
     },
     brandMotto: {
         color: 'white',
         fontSize: 20,
         alignSelf: 'center',
-        top: 40
+        top: 30,
+        height: 40,
+        fontFamily: "OpenSans_600SemiBold",
     },
     button: {
         flex: 1,
-        top: 630,
+        top: 650,
         width: '50%',
         position: 'absolute',
         alignSelf: 'center',
@@ -98,15 +114,15 @@ const styles = StyleSheet.create({
     },
     buttonText: {
         fontSize: 16,
-        lineHeight: 15,
         fontWeight: 'bold',
         letterSpacing: 1,
         color: '#0496ff',
         alignSelf: 'center',
+        fontFamily: "OpenSans_600SemiBold",
     },
     signInText: {
         width: '70%',
-        top: 70,
+        top: 80,
         padding: 10,
         alignSelf: 'center',
         paddingLeft: 30,

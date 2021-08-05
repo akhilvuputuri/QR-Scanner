@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Text, View, StyleSheet, Button } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 import axios from "axios";
+import APIHOST from '../../config';
+import colors from "../../assets/colors";
 
 export default function App() {
   const [hasPermission, setHasPermission] = useState(null);
@@ -19,7 +21,8 @@ export default function App() {
     const article = { id: data, redeemed: true };
     // for this put request use the /redeem api; 1. change the url acc to backend
     // when qr code is scanned the data is the id of voucher and will be sent to api to mark as redeemed
-    axios.put('https://insertredeemurlhere', article)
+    axios
+      .put(`http://${APIHOST}:8080/api/redeem`, article)
       .then((res) => {
         setScanned(true);
         alert(`Redeemed voucher with id: ${data}`);
@@ -38,11 +41,13 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      {scanned && <Button title={'Tap to Scan Again'} onPress={() => setScanned(false)} />}
-      <BarCodeScanner
-        onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
-        style={StyleSheet.absoluteFillObject}
-      />
+      {scanned && <Button title="Tap to Scan Again" color="black" onPress={() => setScanned(false)} />}
+      {!scanned && 
+        <BarCodeScanner
+          onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
+          style={StyleSheet.absoluteFillObject}
+        />
+      }
 
     </View>
   );
@@ -53,7 +58,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#fff',
+    backgroundColor: colors.dodgerblue,
   },
   barCodeView: {
     width: '100%', 

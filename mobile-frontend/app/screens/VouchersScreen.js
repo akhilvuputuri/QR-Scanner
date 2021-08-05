@@ -13,39 +13,16 @@ import MyVCard from "../components/MyVCard";
 import colors from "../../assets/colors";
 import APIHOST from '../../config';
 
-const fakeData = [
-  {
-    id: "123456",
-    shopName: "Adidas",
-    voucherName: "All Apparels",
-    description: "This voucher is applicable to all apparels.",
-    rating: "4.99",
-    cost: "20",
-    value: "30",
-    imageUrl: "https://picsum.photos/200/300",
-    expiry: "9 August 2021",
-  },
-  {
-    id: "654321",
-    shopName: "Nike",
-    voucherName: "All Shoes",
-    description: "This voucher is applicable to shoes only.",
-    rating: "4.43",
-    cost: "14",
-    value: "30",
-    imageUrl: "https://picsum.photos/200/300",
-    expiry: "21 September 2021",
-  },
-];
-
 function VouchersScreen( {navigation} ) {
-  const [vouchers, setVouchers] = useState(fakeData);
+  const [vouchers, setVouchers] = useState([]);
   useEffect(() => {
     axios
       .get(`http://${APIHOST}:8080/api/vouchers/all`)
       .then((res) => {
         console.log(res.data)
-        setVouchers(res.data.vouchers);
+        const allVouchers = res.data.vouchers;
+        const nonRedeemed = allVouchers.filter(v => v.redeemed !== true);
+        setVouchers(nonRedeemed);
       })
       .catch((err) => {
         console.log(err);
