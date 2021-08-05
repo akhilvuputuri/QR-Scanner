@@ -11,6 +11,7 @@ import {
 import SearchBar from "../components/SearchBar";
 import MyVCard from "../components/MyVCard";
 import colors from "../../assets/colors";
+import APIHOST from '../../config';
 
 const fakeData = [
   {
@@ -39,7 +40,7 @@ function VouchersScreen(props) {
   const [vouchers, setVouchers] = useState([]);
   useEffect(() => {
     axios
-      .get("http://172.31.24.129:8080/api/vouchers/all")
+      .get(`http://${APIHOST}:8080/api/vouchers/all`)
       .then((res) => {
         setVouchers(res.data.vouchers);
       })
