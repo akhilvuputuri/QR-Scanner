@@ -168,7 +168,7 @@ function Form(props) {
             <FormControl className={classes.formField}>
               <TextField
                 fullWidth
-                type="number"
+                type="decimal"
                 name="costPrice"
                 label="Cost Price ($)"
                 className={classes.field}
