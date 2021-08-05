@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Text, View, StyleSheet, Button } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
+import axios from "axios";
 
 export default function App() {
   const [hasPermission, setHasPermission] = useState(null);
@@ -14,8 +15,16 @@ export default function App() {
   }, []);
 
   const handleBarCodeScanned = ({ type, data }) => {
-    setScanned(true);
-    alert(`${data}`);
+    // data here is qrcodetext
+    const article = { id: data, redeemed: true };
+    axios.put('https://google.com', article)
+      .then((res) => {
+        setScanned(true);
+        alert(`Redeemed voucher with id: ${data}`);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   if (hasPermission === null) {
