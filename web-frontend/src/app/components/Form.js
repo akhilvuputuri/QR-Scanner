@@ -68,16 +68,15 @@ function Form(props) {
         }}
         onSubmit={(values, { setSubmitting }) => {
           setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
             for (let i = 0; i < values.quantity; i++) {
               const data = {
                 name: values.voucherName,
                 value: values.value,
                 claimable: values.claimable,
-                cost: values.cost,
+                cost: values.costPrice,
                 description: values.description,
                 shopName: values.shopName,
-                expiry: values.expiry,
+                expiry: values.expiryDate,
               };
               axios
                 .post("http://localhost:8080/api/vouchers", data)
@@ -109,6 +108,17 @@ function Form(props) {
                 type="name"
                 label="Voucher Name"
                 name="voucherName"
+                className={classes.field}
+                onChange={handleChange}
+              />
+            </FormControl>
+            <br></br>
+            <FormControl className={classes.formField}>
+              <TextField
+                fullWidth
+                type="string"
+                label="Description"
+                name="description"
                 className={classes.field}
                 onChange={handleChange}
               />
