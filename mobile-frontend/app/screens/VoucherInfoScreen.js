@@ -44,7 +44,7 @@ function VoucherInfoScreen({ navigation, route }) {
       </TouchableWithoutFeedback>
       <View style={styles.imageContainer}>
         <Image 
-          source={{ uri: 'https://picsum.photos/200/300' }}
+          source={{ uri: imageUrl }}
           style={{ height: 280, width: '100%' }}
         />
       </View>
