@@ -3,7 +3,7 @@ import { DataGrid, GridAddIcon } from "@material-ui/data-grid";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
-import Forms from "./Form";
+import Form from "./Form";
 
 function rand() {
   return Math.round(Math.random() * 20) - 10;
@@ -235,7 +235,7 @@ export default function DataTable({ vouchers }) {
   const body = (
     <div style={modalStyle} className={classes.paper}>
       <h2 id="simple-modal-title">Add Voucher</h2>
-      <Forms className={classes.form} />
+      <Form className={classes.form} />
     </div>
   );
 
