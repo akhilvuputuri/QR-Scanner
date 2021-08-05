@@ -14,7 +14,6 @@ const MyVCard = ({ item, last, navigation }) => {
     expiry,
   } = item;
 
-  console.log(item);
   const displayExpiry = item.expiry.split("T")[0];
 
   // shopName, expiry, value

@@ -44,6 +44,7 @@ function VouchersScreen( {navigation} ) {
     axios
       .get(`http://${APIHOST}:8080/api/vouchers/all`)
       .then((res) => {
+        console.log(res.data)
         setVouchers(res.data.vouchers);
       })
       .catch((err) => {
