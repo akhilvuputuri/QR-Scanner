@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
     },
     claimable: {
-      type: DataTypes.STRING,
+      type: DataTypes.BOOLEAN,
     },
     value: {
       type: DataTypes.STRING,
@@ -22,12 +22,13 @@ module.exports = (sequelize, DataTypes) => {
     },
     redeemed: {
       type: DataTypes.BOOLEAN,
+      defaultValue: false,
     },
     description: {
       type: DataTypes.TEXT,
     },
     rating: {
-      type: DataTypes.DECIMAL(10, 2)
+      type: DataTypes.DECIMAL(10, 2),
     },
     imageUrl: {
       type: DataTypes.TEXT,
@@ -43,9 +44,14 @@ module.exports = (sequelize, DataTypes) => {
   Voucher.associate = (models) => {
     // associations can be defined here
     Voucher.belongsTo(models.User, {
-      foreignKey: "userId",
-      targetKey: "id",
+      unique: true,
+      allowNull: true,
     });
+
+    // Voucher.belongsToMany(models.User, {
+    //   through: "User_Fav",
+    //   constraints: false,
+    // });
   };
 
   return Voucher;

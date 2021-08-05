@@ -1,9 +1,10 @@
 import React from 'react';
 import { StyleSheet, SafeAreaView, Text, Image, View, TouchableWithoutFeedback, TouchableOpacity } from "react-native";
 import colors from '../../assets/colors';
+import QRCode from 'react-native-qrcode-svg';
 
-function VoucherInfoScreen({ navigation, route }) {
-  const { shopName, voucherName, description, rating, cost, value, imageUrl } = route.params.item;
+function MyVoucherDetailsScreen({ navigation, route }) {
+  const { id, shopName, voucherName, description, rating, cost, value, imageUrl } = route.params.item;
 
   return (
     <SafeAreaView style={styles.container}>
@@ -20,9 +21,13 @@ function VoucherInfoScreen({ navigation, route }) {
         </View>
       </TouchableWithoutFeedback>
       <View style={styles.imageContainer}>
-        <Image 
+        {/* <Image 
           source={{ uri: 'https://picsum.photos/200/300' }}
           style={{ height: 280, width: '100%' }}
+        /> */}
+        <QRCode
+          value={id}
+          size={250}
         />
       </View>
       <View style={styles.headingContainer}>
@@ -43,17 +48,13 @@ function VoucherInfoScreen({ navigation, route }) {
         <Text style={styles.textBolded}>Value:  </Text>
         <Text style={styles.textRegular}>${value}</Text>
       </View>
-      <View style={styles.valueAndCostContainer}>
-        <Text style={styles.textBolded}>Cost:  </Text>
-        <Text style={styles.textRegular}>${cost}</Text>
-      </View>
-      <View style={styles.buttonContainer}>
+      {/* <View style={styles.buttonContainer}>
         <TouchableOpacity style={styles.button}>
           <Text style={styles.buttonText}>
             Buy now!
           </Text>
         </TouchableOpacity>
-      </View>
+      </View> */}
     </SafeAreaView>
   );
 }
@@ -69,8 +70,9 @@ const styles = StyleSheet.create({
     height: 30,
   },
   imageContainer: {
-    marginTop: 10,
+    marginTop: 30,
     height: 280,
+    alignItems: 'center',
     width: '100%',
   },
   headingContainer: {
@@ -127,4 +129,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default VoucherInfoScreen;
+export default MyVoucherDetailsScreen;

@@ -51,28 +51,28 @@ const VoucherCard = ({ item, last, navigation }) => {
       </View>
     </TouchableWithoutFeedback>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     height: 350,
     width: 240,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
     borderRadius: 8,
     marginLeft: 32,
   },
   savedPill: {
-    position: 'absolute',
+    position: "absolute",
     top: 10,
     left: 10,
     borderRadius: 10,
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     width: 100,
     height: 22,
     backgroundColor: colors.orange,
-    shadowColor: 'black',
+    shadowColor: "black",
     shadowOffset: {
       width: 0,
       height: 10,
@@ -82,13 +82,13 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   savedText: {
-    fontFamily: 'OpenSans_400Regular',
+    fontFamily: "OpenSans_400Regular",
     fontSize: 12,
   },
   image: {
     height: 160,
     width: 240,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
     borderRadius: 8,
   },
   bottomContainer: {
@@ -101,39 +101,39 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   heading: {
-    fontFamily: 'OpenSans_700Bold',
+    fontFamily: "OpenSans_700Bold",
     fontSize: 18,
   },
   text: {
-    fontFamily: 'OpenSans_400Regular',
+    fontFamily: "OpenSans_400Regular",
     fontSize: 12,
     marginTop: 10,
   },
   ratingText: {
-    fontFamily: 'OpenSans_400Regular',
+    fontFamily: "OpenSans_400Regular",
     fontSize: 12,
   },
   valueText: {
-    fontFamily: 'OpenSans_400Regular',
+    fontFamily: "OpenSans_400Regular",
     fontSize: 12,
-    textDecorationStyle: 'solid',
-    textDecorationLine: 'line-through',
+    textDecorationStyle: "solid",
+    textDecorationLine: "line-through",
     marginRight: 10,
-    color: 'gray'
+    color: "gray",
   },
   costText: {
-    fontFamily: 'OpenSans_400Regular',
+    fontFamily: "OpenSans_400Regular",
     fontSize: 12,
     marginRight: 2,
   },
   ratingContainer: {
     height: 36,
-    borderTopColor: 'lightgray',
+    borderTopColor: "lightgray",
     borderTopWidth: 1,
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    flexDirection: 'row',
-  }, 
+    alignItems: "center",
+    justifyContent: "space-between",
+    flexDirection: "row",
+  },
 });
 
 export default VoucherCard;
