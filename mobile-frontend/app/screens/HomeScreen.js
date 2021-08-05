@@ -1,13 +1,29 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
 import { StyleSheet, View, Text, SafeAreaView } from "react-native";
-import SearchBar from '../components/SearchBar';
-import { IconButton, Button } from 'react-native-paper';
-import colors from '../../assets/colors';
+import SearchBar from "../components/SearchBar";
+import { IconButton, Button } from "react-native-paper";
+import colors from "../../assets/colors";
+import axios from "axios";
 
 function HomeScreen(props) {
-  const [searchQuery, setSearchQuery] = React.useState('');
+  const [searchQuery, setSearchQuery] = React.useState("");
+  const [savings, setSavings] = useState(0);
+  const [voucherCount, setVoucherCount] = useState(0);
 
-  const onChangeSearch = query => setSearchQuery(query);
+  const onChangeSearch = (query) => setSearchQuery(query);
+
+  useEffect(() => {
+    axios
+      .get("http://172.31.24.129:8080/api/savings")
+      .then((res) => {
+        console.log(res.data);
+        setSavings(res.data.saved);
+        setVoucherCount(res.data.count);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -31,7 +47,7 @@ function HomeScreen(props) {
               }}
             >
               <IconButton icon="cash-usd" color="black" size={36} styles={{ flex: 1 }}/>
-              <Text style={styles.savingsText}>$130</Text>
+              <Text style={styles.savingsText}>{`$ ${savings}`}</Text>
             </View>
           </View>
           <View style={styles.verticleLine}></View>
@@ -45,7 +61,7 @@ function HomeScreen(props) {
               }}
             >
               <IconButton icon="ticket-percent" color="black" size={36} styles={{ flex: 1 }}/>
-              <Text style={styles.savingsText}>40</Text>
+              <Text style={styles.savingsText}>{voucherCount}</Text>
             </View>
           </View>
           <Text
@@ -72,32 +88,31 @@ function HomeScreen(props) {
       <View style={styles.body}>
         <View style={styles.tapWrapper}>
           <View style={styles.tap}>
-            <IconButton icon="food" size={50} styles={styles.tap}/>
+            <IconButton icon="food" size={50} styles={styles.tap} />
             <Text>Food</Text>
           </View>
           <View style={styles.tap}>
-            <IconButton icon="shopping" size={50} styles={styles.tap}/>
+            <IconButton icon="shopping" size={50} styles={styles.tap} />
             <Text>Shopping</Text>
           </View>
           <View style={styles.tap}>
-            <IconButton icon="beach" size={50} styles={styles.tap}/>
+            <IconButton icon="beach" size={50} styles={styles.tap} />
             <Text>Vacation</Text>
           </View>
           <View style={styles.tap}>
-            <IconButton icon="bike" size={50} styles={styles.tap}/>
+            <IconButton icon="bike" size={50} styles={styles.tap} />
             <Text>Travel</Text>
           </View>
           <View style={styles.tap}>
-            <IconButton icon="run" size={50} styles={styles.tap}/>
+            <IconButton icon="run" size={50} styles={styles.tap} />
             <Text>Fitness</Text>
           </View>
           <View style={styles.tap}>
-            <IconButton icon="ice-cream" size={50} styles={styles.tap}/>
+            <IconButton icon="ice-cream" size={50} styles={styles.tap} />
             <Text>Desserts</Text>
           </View>
         </View>
       </View>
-      
     </SafeAreaView>
   );
 }
@@ -113,7 +128,7 @@ const styles = StyleSheet.create({
     flex: 1
   },
   headerText: {
-    color: '#fff',
+    color: "#fff",
     fontSize: 24,
     alignSelf: 'center',
     fontFamily: 'OpenSans_600SemiBold',
@@ -125,19 +140,19 @@ const styles = StyleSheet.create({
     marginLeft: 50,
     marginRight: 50,
     paddingBottom: 20,
-    borderRadius: 20
+    borderRadius: 20,
   },
   tap: {
     // backgroundColor: 'white',
     width: 100,
     height: 100,
     margin: 2,
-    color: '#fff',
+    color: "#fff",
     lineHeight: 100,
-    textAlign: 'center',
+    textAlign: "center",
     fontSize: 30,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
   tapWrapper2: {
     flex: 1,
@@ -151,10 +166,10 @@ const styles = StyleSheet.create({
     width: 150,
     margin: 2,
     lineHeight: 100,
-    textAlign: 'center',
+    textAlign: "center",
     fontSize: 30,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
   subHeaderText: {
     fontSize: 22,
