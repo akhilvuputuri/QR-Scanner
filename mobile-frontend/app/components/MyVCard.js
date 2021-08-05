@@ -5,7 +5,7 @@ const MyVCard = ({ item, last, navigation }) => {
   const {
     id,
     shopName,
-    voucherName,
+    name,
     description,
     rating,
     cost,
@@ -24,7 +24,7 @@ const MyVCard = ({ item, last, navigation }) => {
     <View style={styles.container}>
       <View style={{ flex: 1 }}>
         <Text style={{ fontSize: 24, fontFamily: "OpenSans_700Bold" }}>
-          {shopName}
+          {shopName}: {name}
         </Text>
       </View>
       <View style={{ flex: 1, marginTop: 10 }}>

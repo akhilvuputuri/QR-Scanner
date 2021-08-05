@@ -3,7 +3,7 @@ import { StyleSheet, View, Text, Image, TouchableWithoutFeedback } from "react-n
 import colors from '../../assets/colors';
 
 const VoucherCard = ({ item, last, navigation }) => {
-  const { shopName, voucherName, description, rating, cost, value, imageUrl } = item;
+  const { shopName, name, description, rating, cost, value, imageUrl } = item;
   const saved = (parseInt(value) - parseInt(cost)).toString();
 
   return (
@@ -25,7 +25,7 @@ const VoucherCard = ({ item, last, navigation }) => {
         </View>
         <View style={styles.bottomContainer}>
           <View style={styles.textContainer}>
-            <Text style={styles.heading}>{shopName}: {voucherName}</Text>
+            <Text style={styles.heading}>{shopName}: {name}</Text>
             <Text style={styles.text}>{description}</Text>
           </View>
           <View style={styles.ratingContainer}>

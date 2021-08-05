@@ -6,54 +6,6 @@ import colors from "../../assets/colors";
 import axios from "axios";
 import APIHOST from '../../config';
 
-const fakeData = [
-  {
-    shopName: "adidas",
-    voucherName: "All Apparels",
-    description: "This voucher is applicable to all apparels.",
-    rating: "4.99",
-    cost: "20",
-    value: "30",
-    imageUrl: "https://picsum.photos/200/300",
-  },
-  {
-    shopName: "nike",
-    voucherName: "All Shoes",
-    description: "This voucher is applicable to shoes only.",
-    rating: "4.43",
-    cost: "14",
-    value: "30",
-    imageUrl: "https://picsum.photos/200/300",
-  },
-  {
-    shopName: 'nike',
-    voucherName: 'All Shoes',
-    description: 'This voucher is applicable to shoes only.',
-    rating: '4.43',
-    cost: '14',
-    value: '30',
-    imageUrl: 'https://picsum.photos/200/300'
-  },
-  {
-    shopName: 'nike',
-    voucherName: 'All Shoes',
-    description: 'This voucher is applicable to shoes only.',
-    rating: '4.43',
-    cost: '14',
-    value: '30',
-    imageUrl: 'https://picsum.photos/200/300'
-  },
-  {
-    shopName: 'nike',
-    voucherName: 'All Shoes',
-    description: 'This voucher is applicable to shoes only.',
-    rating: '4.43',
-    cost: '14',
-    value: '30',
-    imageUrl: 'https://picsum.photos/200/300'
-  },
-];
-
 function DiscoverScreen({ navigation }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [vouchers, setVouchers] = useState([])
@@ -92,8 +44,8 @@ function DiscoverScreen({ navigation }) {
                 horizontal
                 showsHorizontalScrollIndicator={false}
               >
-                {fakeData && fakeData.map((item, idx) => {
-                  const last = idx + 1 === fakeData.length;
+                {vouchers && vouchers.map((item, idx) => {
+                  const last = idx + 1 === vouchers.length;
                   return (
                     <VoucherCard item={item} last={last} key={idx} navigation={navigation} />
                   )
@@ -116,8 +68,8 @@ function DiscoverScreen({ navigation }) {
                 horizontal
                 showsHorizontalScrollIndicator={false}
               >
-                {fakeData && fakeData.map((item, idx) => {
-                  const last = idx + 1 === fakeData.length;
+                {vouchers && vouchers.map((item, idx) => {
+                  const last = idx + 1 === vouchers.length;
                   return (
                     <VoucherCard item={item} last={last} key={idx} navigation={navigation} />
                   )

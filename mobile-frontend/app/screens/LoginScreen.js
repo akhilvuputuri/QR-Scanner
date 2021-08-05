@@ -30,6 +30,7 @@ export function LoginScreen({navigation}) {
                 placeholder="Enter your email address"
                 placeholderTextColor='gray'
                 borderColor='gray'
+                borderRadius={5}
                 textContentType="emailAddress"
             />
 
@@ -42,6 +43,7 @@ export function LoginScreen({navigation}) {
             
             <TextInput
                     style={styles.signInText}
+                    borderRadius={5}
                     autoCapitalize="none"
                     name="password"
                     placeholder="Enter your password"
@@ -53,7 +55,7 @@ export function LoginScreen({navigation}) {
             
             <Pressable style={styles.button}
             onPress={()=>navigation.navigate(HomeScreen)}>
-                <Text style={styles.buttonText}>Let's Start Saving</Text>
+                <Text style={styles.buttonText}>Start saving!</Text>
             </Pressable>
             
         </View>
@@ -74,17 +76,20 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         fontSize: 30,
         alignSelf: 'center',
-        top: 20
+        top: 20,
+        fontFamily: "OpenSans_800ExtraBold",
     },
     brandMotto: {
         color: 'white',
         fontSize: 20,
         alignSelf: 'center',
-        top: 40
+        top: 40,
+        height: 30,
+        fontFamily: "OpenSans_600SemiBold",
     },
     button: {
         flex: 1,
-        top: 630,
+        top: 650,
         width: '50%',
         position: 'absolute',
         alignSelf: 'center',
@@ -98,15 +103,15 @@ const styles = StyleSheet.create({
     },
     buttonText: {
         fontSize: 16,
-        lineHeight: 15,
         fontWeight: 'bold',
         letterSpacing: 1,
         color: '#0496ff',
         alignSelf: 'center',
+        fontFamily: "OpenSans_600SemiBold",
     },
     signInText: {
         width: '70%',
-        top: 70,
+        top: 80,
         padding: 10,
         alignSelf: 'center',
         paddingLeft: 30,

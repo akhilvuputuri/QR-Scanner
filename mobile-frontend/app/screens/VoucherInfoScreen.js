@@ -3,7 +3,7 @@ import { StyleSheet, SafeAreaView, Text, Image, View, TouchableWithoutFeedback, 
 import colors from '../../assets/colors';
 
 function VoucherInfoScreen({ navigation, route }) {
-  const { shopName, voucherName, description, rating, cost, value, imageUrl } = route.params.item;
+  const { shopName, name, description, rating, cost, value, imageUrl } = route.params.item;
 
   return (
     <SafeAreaView style={styles.container}>
@@ -26,7 +26,7 @@ function VoucherInfoScreen({ navigation, route }) {
         />
       </View>
       <View style={styles.headingContainer}>
-        <Text style={styles.heading}>{shopName}: {voucherName}</Text>
+        <Text style={styles.heading}>{shopName}: {name}</Text>
         <Image 
           source={require('../../assets/icons/favourite-icon.png')}
           resizeMode='contain'

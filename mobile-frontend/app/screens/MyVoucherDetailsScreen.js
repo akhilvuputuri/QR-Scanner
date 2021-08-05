@@ -4,7 +4,7 @@ import colors from '../../assets/colors';
 import QRCode from 'react-native-qrcode-svg';
 
 function MyVoucherDetailsScreen({ navigation, route }) {
-  const { id, shopName, voucherName, description, rating, cost, value, imageUrl } = route.params.item;
+  const { id, shopName, name, description, rating, cost, value, imageUrl } = route.params.item;
 
   return (
     <SafeAreaView style={styles.container}>
@@ -31,7 +31,7 @@ function MyVoucherDetailsScreen({ navigation, route }) {
         />
       </View>
       <View style={styles.headingContainer}>
-        <Text style={styles.heading}>{shopName}: {voucherName}</Text>
+        <Text style={styles.heading}>{shopName}: {name}</Text>
         <Image 
           source={require('../../assets/icons/favourite-icon.png')}
           resizeMode='contain'
