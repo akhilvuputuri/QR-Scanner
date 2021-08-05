@@ -144,6 +144,7 @@ export default function DataTable() {
         <GridAddIcon className={classes.icon} onClick={handleOpen}>
           </GridAddIcon>
           <Modal
+          className={classes.modal}
           open={open}
           onClose={handleClose}
           aria-labelledby="simple-modal-title"
