@@ -13,15 +13,15 @@ import MyVCard from "../components/MyVCard";
 import colors from "../../assets/colors";
 import APIHOST from '../../config';
 
-function VouchersScreen( {navigation} ) {
+function VouchersScreen({ navigation }) {
   const [vouchers, setVouchers] = useState([]);
   useEffect(() => {
     axios
       .get(`http://${APIHOST}:8080/api/vouchers/all`)
       .then((res) => {
-        console.log(res.data)
+        console.log(res.data.vouchers)
         const allVouchers = res.data.vouchers;
-        const nonRedeemed = allVouchers.filter(v => v.redeemed !== true);
+        const nonRedeemed = allVouchers.filter(v => v.redeemed !== true && v.UserId !== null);
         setVouchers(nonRedeemed);
       })
       .catch((err) => {
