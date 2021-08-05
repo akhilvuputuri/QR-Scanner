@@ -11,6 +11,7 @@ const { retrieveVoucher } = require("./Voucher/retrieve");
 const { purchase } = require("./Voucher/purchase");
 const { redeem } = require("./Voucher/redeem");
 const { savings } = require("./User/savings");
+const { totalRedeem } = require("./Voucher/totalRedeem");
 
 module.exports = {
   createUser,
@@ -24,4 +25,5 @@ module.exports = {
   purchase,
   redeem,
   savings,
+  totalRedeem,
 };

@@ -6,6 +6,7 @@ const {
   purchase,
   redeem,
   savings,
+  totalRedeem,
 } = require("../controllers");
 const { createVoucher } = require("../controllers/Voucher/create");
 const { deleteVoucher } = require("../controllers/Voucher/delete");
@@ -30,6 +31,7 @@ router.put("/vouchers", editVoucher);
 router.delete("/vouchers", deleteVoucher);
 router.put("/purchase", purchase);
 router.put("/redeem", redeem);
+router.get("/totalRedeem/:name", totalRedeem);
 
 // User Fav
 router.post("/favourite", favourite);

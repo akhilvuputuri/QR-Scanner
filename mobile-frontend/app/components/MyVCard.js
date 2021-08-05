@@ -1,8 +1,9 @@
 import React from "react";
-import { StyleSheet, View, Text, Image } from "react-native";
+import { StyleSheet, View, Text, Image, TouchableWithoutFeedback } from "react-native";
 
-const MyVCard = ({ item, last }) => {
+const MyVCard = ({ item, last, navigation }) => {
   const {
+    id,
     shopName,
     voucherName,
     description,
@@ -18,6 +19,9 @@ const MyVCard = ({ item, last }) => {
 
   // shopName, expiry, value
   return (
+    <TouchableWithoutFeedback
+    onPress={() => navigation.navigate('MyVoucherDetailsScreen', { item })}
+  >
     <View style={styles.container}>
       <View style={{ flex: 1 }}>
         <Text style={{ fontSize: 24, fontFamily: "OpenSans_700Bold" }}>
@@ -35,6 +39,7 @@ const MyVCard = ({ item, last }) => {
         </View>
       </View>
     </View>
+    </TouchableWithoutFeedback>
   );
 };
 
