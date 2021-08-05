@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
     },
     button: {
         flex: 1,
-        top: 620,
+        top: 630,
         width: '50%',
         position: 'absolute',
         alignSelf: 'center',
