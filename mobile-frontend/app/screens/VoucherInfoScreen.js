@@ -1,9 +1,32 @@
 import React from 'react';
-import { StyleSheet, SafeAreaView, Text, Image, View, TouchableWithoutFeedback, TouchableOpacity } from "react-native";
+import { StyleSheet, SafeAreaView, Text, Image, View, TouchableWithoutFeedback, TouchableOpacity, Alert } from "react-native";
 import colors from '../../assets/colors';
+import axios from 'axios';
 
 function VoucherInfoScreen({ navigation, route }) {
-  const { shopName, name, description, rating, cost, value, imageUrl } = route.params.item;
+  const { shopName, name, description, rating, cost, value, imageUrl, id } = route.params.item;
+
+  const handleBuyClick = () => {
+    const payload = { userId: '0fb4f0d9-8a58-4ba5-ba5b-4a008ff87c09', voucherId: id };
+
+    axios
+      .put(`http://${APIHOST}:8080/api/purchase`, payload)
+      .then((res) => {
+        Alert.alert(
+          "Purchased!",
+          `You have successfully purchased ${name}!`,
+          [
+            {
+              text: "Ok",
+              onPress: () => navigation.goBack(),
+            }
+          ]
+        );
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -48,7 +71,7 @@ function VoucherInfoScreen({ navigation, route }) {
         <Text style={styles.textRegular}>${cost}</Text>
       </View>
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={() => handleBuyClick()}>
           <Text style={styles.buttonText}>
             Buy now!
           </Text>
