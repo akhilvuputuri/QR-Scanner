@@ -21,10 +21,12 @@ module.exports = (sequelize, DataTypes) => {
 
   User.associate = (models) => {
     // associations can be defined here
-    User.hasMany(models.Voucher, {
-      foreignKey: "id",
-      sourceKey: "id",
-    });
+    User.hasMany(models.Voucher);
+
+    // User.belongsToMany(models.Voucher, {
+    //   through: "User_Fav",
+    //   constraints: false,
+    // });
   };
   return User;
 };
