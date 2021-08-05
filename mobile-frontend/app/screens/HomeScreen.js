@@ -4,6 +4,7 @@ import SearchBar from "../components/SearchBar";
 import { IconButton, Button } from "react-native-paper";
 import colors from "../../assets/colors";
 import axios from "axios";
+import APIHOST from '../../config';
 
 function HomeScreen(props) {
   const [searchQuery, setSearchQuery] = React.useState("");
@@ -14,7 +15,7 @@ function HomeScreen(props) {
 
   useEffect(() => {
     axios
-      .get("http://172.31.24.129:8080/api/savings")
+      .get(`http://${APIHOST}:8080/api/savings`)
       .then((res) => {
         console.log(res.data);
         setSavings(res.data.saved);
