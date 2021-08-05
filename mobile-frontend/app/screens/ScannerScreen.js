@@ -17,7 +17,9 @@ export default function App() {
   const handleBarCodeScanned = ({ type, data }) => {
     // data here is qrcodetext
     const article = { id: data, redeemed: true };
-    axios.put('https://google.com', article)
+    // for this put request use the /redeem api; 1. change the url acc to backend
+    // when qr code is scanned the data is the id of voucher and will be sent to api to mark as redeemed
+    axios.put('https://insertredeemurlhere', article)
       .then((res) => {
         setScanned(true);
         alert(`Redeemed voucher with id: ${data}`);
