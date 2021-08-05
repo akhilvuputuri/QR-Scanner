@@ -2,6 +2,8 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Formik } from 'formik';
 import { TextField } from '@material-ui/core';
+import FormControl from '@material-ui/core/FormControl';
+import Button from '@material-ui/core/Button';
 
 const handleClose = () => {
  console.log("TEST");
@@ -27,9 +29,6 @@ const useStyles = makeStyles((theme) => ({
    marginRight: '10px',
    borderWidth: '1px',
    cursor: 'pointer',
-   '&:hover': {
-     backgroundColor: '#FFBC42',
-   },
   },
   cancelButton: {
    padding: '5px',
@@ -38,9 +37,6 @@ const useStyles = makeStyles((theme) => ({
    marginRight: '10px',
    borderWidth: '1px',
    cursor: 'pointer',
-   '&:hover': {
-     backgroundColor: 'grey',
-   },
   },
   formField: {
    display: 'table-row',
@@ -51,6 +47,7 @@ const useStyles = makeStyles((theme) => ({
    marginRight: theme.spacing(1),
   },
   buttonContainer: {
+    display: 'flex',
     float: 'right',
   },
   }));
@@ -72,84 +69,76 @@ return (
          values,
          errors,
          touched,
-         handleChange,
-         handleBlur,
          handleSubmit,
+         handleChange,
          isSubmitting,
        }) => (
          <form onSubmit={handleSubmit} className={classes.form}>
-          <div className={classes.formField}>
+          <FormControl className={classes.formField}>
            <TextField
              fullWidth
              type="name"
              label="Voucher Name"
              name="voucherName"
-             onChange={handleChange}
-             onBlur={handleBlur}
-             value={values.voucherName}
              className={classes.field}
+             onChange={handleChange}
            />
-          </div>
+          </FormControl>
           <br></br>
-          <div className={classes.formField}>
+          <FormControl className={classes.formField}>
            <TextField
              fullWidth
              type="date"
              label="Expiry Date"
              name="expiryDate"
-             defaultValue="2017-05-24"
+             defaultValue="yyyy-mm-dd"
              className={classes.field}
+             onChange={handleChange}
              InputLabelProps={{
                shrink: true,
              }}
            />
-          </div>
+          </FormControl>
           <br></br>
           <div className={classes.formField}>
            <TextField
              fullWidth
              type="number"
              name="value"
-             label="Value"
-             onChange={handleChange}
-             onBlur={handleBlur}
-             value={values.value}
+             label="Value ($)"
              className={classes.field}
+             onChange={handleChange}
            />
           </div>
           <br></br>
-          <div className={classes.formField}>
+          <FormControl className={classes.formField}>
            <TextField
              fullWidth
              type="number"
              name="costPrice"
-             label="Cost Price"
-             onChange={handleChange}
-             onBlur={handleBlur}
-             value={values.costPrice}
+             label="Cost Price ($)"
              className={classes.field}
+             onChange={handleChange}
            />
-          </div>
+          </FormControl>
           <br></br>
-           <div className={classes.formField}>
+           <FormControl className={classes.formField}>
            <TextField
              fullWidth
              type="number"
              name="quantity"
              label="Quantity"
-             onChange={handleChange}
-             onBlur={handleBlur}
-             value={values.quantity}
              className={classes.field}
+             onChange={handleChange}
            />
-           </div>
+           </FormControl>
            <br/>
            <br/>
            <div className={classes.buttonContainer}>
-            <button type="submit" className={classes.submitButton} disabled={isSubmitting}>
+            <Button variant="contained" type="submit" className={classes.submitButton} disabled={isSubmitting}>
              Submit
-            </button>
-            <button type="button" className={classes.cancelButton} onClick={handleClose}>Cancel</button>
+            </Button>
+            <Button variant="contained" type="button" className={classes.cancelButton} onClick={handleClose}>Cancel</Button>
            </div>
          </form>
        )}
