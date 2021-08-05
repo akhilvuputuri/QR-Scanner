@@ -2,13 +2,17 @@ import React from 'react';
 import Constants from "expo-constants";
 import { StyleSheet, SafeAreaView, View, Text, Image, Button, Separator, Pressable, TextInput } from "react-native";
 import * as Yup from "yup";
+import Navbar from '../../navigation/Navbar';
+import HomeScreen from './HomeScreen';
+
+
 
 const validationSchema = Yup.object().shape({
     email: Yup.string().required().email().label("Email"),
     password: Yup.string().required().min(4).label("Password"),
   });
 
-export function LoginScreen() {
+export function LoginScreen({navigation}) {
 
     return (
         <View style={[styles.screen]}>
@@ -47,7 +51,8 @@ export function LoginScreen() {
                     secureTextEntry={true}
             />
             
-            <Pressable style={styles.button}>
+            <Pressable style={styles.button}
+            onPress={()=>navigation.navigate(HomeScreen)}>
                 <Text style={styles.buttonText}>Let's Start Saving</Text>
             </Pressable>
             
