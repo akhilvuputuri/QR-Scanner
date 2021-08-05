@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from '../app/screens/HomeScreen';
 import DiscoverScreenStack from '../app/screens/DiscoverScreenStack';
+import VouchersScreenStack from '../app/screens/VouchersScreenStack';
 import ScannerScreen from '../app/screens/ScannerScreen';
 import FavouritesScreen from '../app/screens/FavouritesScreen';
 import VouchersScreen from '../app/screens/VouchersScreen';
@@ -124,7 +125,7 @@ const Navbar = () => {
       />
       <Tab.Screen 
         name="Vouchers"
-        component={VouchersScreen}
+        component={VouchersScreenStack}
         options={{
           tabBarIcon: ({ focused }) => (
             <View>

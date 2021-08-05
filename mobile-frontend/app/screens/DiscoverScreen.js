@@ -4,6 +4,7 @@ import SearchBar from "../components/SearchBar";
 import VoucherCard from "../components/VoucherCard";
 import colors from "../../assets/colors";
 import axios from "axios";
+import APIHOST from '../../config';
 
 const fakeData = [
   {
@@ -60,8 +61,9 @@ function DiscoverScreen({ navigation }) {
 
   useEffect(() => {
     axios
-      .get("http://172.31.24.129:8080/api/vouchers/all")
+      .get(`http://${APIHOST}:8080/api/vouchers/all`)
       .then((res) => {
+        console.log(res.data)
         setVouchers(res.data.vouchers);
       })
       .catch((err) => {
