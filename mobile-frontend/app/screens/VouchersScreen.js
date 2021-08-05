@@ -15,6 +15,7 @@ import APIHOST from '../../config';
 
 const fakeData = [
   {
+    id: "123456",
     shopName: "Adidas",
     voucherName: "All Apparels",
     description: "This voucher is applicable to all apparels.",
@@ -25,6 +26,7 @@ const fakeData = [
     expiry: "9 August 2021",
   },
   {
+    id: "654321",
     shopName: "Nike",
     voucherName: "All Shoes",
     description: "This voucher is applicable to shoes only.",
@@ -36,8 +38,8 @@ const fakeData = [
   },
 ];
 
-function VouchersScreen(props) {
-  const [vouchers, setVouchers] = useState([]);
+function VouchersScreen( {navigation} ) {
+  const [vouchers, setVouchers] = useState(fakeData);
   useEffect(() => {
     axios
       .get(`http://${APIHOST}:8080/api/vouchers/all`)
@@ -57,7 +59,7 @@ function VouchersScreen(props) {
             <View style={styles.cardsContainer}>
               <Text style={styles.heading}>My Vouchers</Text>
               {vouchers.map((item, idx) => {
-                return <MyVCard item={item} />;
+                return <MyVCard item={item} key={idx} navigation={navigation}/>;
               })}
             </View>
           </ScrollView>
